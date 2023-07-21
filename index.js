@@ -1,4 +1,5 @@
 const express = require("express")
+const cors=require("cors")
 const mongoose = require("mongoose")
 const server = express()
 require("dotenv").config()
@@ -7,7 +8,9 @@ server.use(express.json())
 const {authMiddleware}=require("./middleware/auth.middleware")
 const {userRouter}=require("./routes/user.route")
 const exerciseroute = require("./routes/Exerciseroutes")
-
+server.use(cors({
+    origin:"*"
+}))
 
 
 server.get("/", (req, res) => {
