@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const exerciseSchema = new mongoose.Schema({
+const GymSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -38,16 +38,7 @@ const exerciseSchema = new mongoose.Schema({
 });
 
 
-const categorySchema = new mongoose.Schema({
-    category: {
-        type: String,
-        required: true
 
-    },
-    exercises: [exerciseSchema],
+const Gymmodel = mongoose.model('gym', GymSchema);
 
-});
-
-const Category = mongoose.model('exercise', categorySchema);
-
-module.exports = Category;
+module.exports = Gymmodel;
