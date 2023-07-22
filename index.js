@@ -1,4 +1,5 @@
 const express = require("express")
+const cors=require("cors")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const server = express()
@@ -10,7 +11,13 @@ server.use(cors({ origin:"*"}))
 const { authMiddleware } = require("./middleware/auth.middleware")
 const { userRouter } = require("./routes/user.route")
 const exerciseroute = require("./routes/Exerciseroutes")
+
 const adminroute = require("./routes/adminroute")
+
+
+server.use(cors({
+    origin:"*"
+}))
 
 
 
