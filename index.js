@@ -1,16 +1,24 @@
 const express = require("express")
 const cors=require("cors")
 const mongoose = require("mongoose")
+const cors = require("cors")
 const server = express()
 require("dotenv").config()
-const {connect}=require("./config/db")
+const { connect } = require("./config/db")
 server.use(express.json())
-const {authMiddleware}=require("./middleware/auth.middleware")
-const {userRouter}=require("./routes/user.route")
+server.use(cors({ origin:"*"}))
+
+const { authMiddleware } = require("./middleware/auth.middleware")
+const { userRouter } = require("./routes/user.route")
 const exerciseroute = require("./routes/Exerciseroutes")
+
+const adminroute = require("./routes/adminroute")
+
+
 server.use(cors({
     origin:"*"
 }))
+
 
 
 server.get("/", (req, res) => {
@@ -18,9 +26,9 @@ server.get("/", (req, res) => {
 })
 
 
-server.use("/user",userRouter)
+server.use("/user", userRouter)
 server.use("/fitness", exerciseroute)
-
+server.use("/admin",adminroute)
 
 
 

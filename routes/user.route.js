@@ -29,6 +29,7 @@ userRouter.post("/login", async (req, res) => {
       const decoded = bcrypt.compare(password, user[0].password)
       if (decoded) {
         const token = jwt.sign({ userId: user[0]._id }, "masai")
+   
         return res.status(201).json({ user, token })
       } else {
         res.send(`wrong password`)
