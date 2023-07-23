@@ -5,8 +5,47 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const { userModel } = require("../models/user.model")
 const blacklistmodel = require("../models/blacklistmodal")
+const validatePassword = (password) => {
+  // The password must be at least 8 characters long.
+  if (password.length < 5) {
+    return false;
+  }
+
+  // The password must contain at least one uppercase letter.
+  if (!/[A-Z]/.test(password)) {
+    return false;
+  }
+
+  // The password must contain at least one lowercase letter.
+  if (!/[a-z]/.test(password)) {
+    return false;
+  }
+
+  // The password must contain at least one digit.
+  if (!/[0-9]/.test(password)) {
+    return false;
+  }
+
+  // The password must contain at least one special character.
+  if (!/[!@#$%^&*()_+-]/.test(password)) {
+    return false;
+  }
+
+  return true;
+};
+
+// const validatePassword=(password)=>{
+//   if(!/[A-Z a-z 0-9 %&*+-=#$]{5,}/.test(password)){
+//     return false
+//   }
+//   return true
+// }
 userRouter.post("/register", async (req, res) => {
   const { name, password, gender, subscription, age, email } = req.body
+  if (!validatePassword(password)) {
+    res.send("Invalid password");
+    return;
+  }
   try {
     const hashedPassword = await bcrypt.hash(password, 5)
     if (hashedPassword) {
