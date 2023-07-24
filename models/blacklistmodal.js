@@ -30,6 +30,8 @@ const Blacklistschema = new mongoose.Schema({
 
 
 
+
+
 const Blacklistmodel = mongoose.model("blacklist", Blacklistschema)
 
 module.exports = Blacklistmodel
