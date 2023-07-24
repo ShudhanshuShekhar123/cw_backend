@@ -5,6 +5,7 @@ const Adminmodel = require("../models/adminmodel")
 const jwt = require("jsonwebtoken")
 const blacklistmodel = require("../models/blacklistmodal")
 const adminauthmiddleware = require("../middleware/adminauthmiddleware")
+const {userModel} = require("../models/user.model")
 
 route.post("/login", async (req, res) => {
 
@@ -25,6 +26,19 @@ route.post("/login", async (req, res) => {
 
 })
 
+//get all user
+
+route.get("/getusers", async (req, res) => {
+    try {
+
+        const users = await userModel.find();
+        res.status(200).json(users);
+
+    }
+    catch (error) {
+        res.status(500).json({ message: "Failed to retrieve users." });
+    }
+});
 
 
 

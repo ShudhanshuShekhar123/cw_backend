@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const { userModel } = require("../models/user.model")
 const blacklistmodel = require("../models/blacklistmodal")
+
+
+
 userRouter.post("/register", async (req, res) => {
   const { name, password, gender, subscription, age, email } = req.body
   try {
@@ -29,7 +32,7 @@ userRouter.post("/login", async (req, res) => {
       const decoded = bcrypt.compare(password, user[0].password)
       if (decoded) {
         const token = jwt.sign({ userId: user[0]._id }, "masai")
-   
+
         return res.status(201).json({ user, token })
       } else {
         res.send(`wrong password`)
