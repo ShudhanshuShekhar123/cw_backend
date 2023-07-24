@@ -8,7 +8,28 @@ const Blacklistschema = new mongoose.Schema({
         default: []
     }
 
+
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const Blacklistmodel = mongoose.model("blacklist", Blacklistschema)
