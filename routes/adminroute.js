@@ -26,8 +26,9 @@ route.post("/login", async (req, res) => {
 
 })
 
-//get all user
 
+
+//get all user
 route.get("/getusers", async (req, res) => {
     try {
 
