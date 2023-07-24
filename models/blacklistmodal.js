@@ -8,6 +8,7 @@ const Blacklistschema = new mongoose.Schema({
         default: []
     }
 
+    
 })
 
 
