@@ -11,6 +11,8 @@ const GymSchema = new mongoose.Schema({
         required: true,
     },
     duration: {
+
+
         type: Number,
         required: true,
     },
