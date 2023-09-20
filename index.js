@@ -15,6 +15,9 @@ const adminroute = require("./routes/adminroute")
 
 server.get("/", (req, res) => {
     res.send("wwelcome to home page")
+
+
+//hellol
 })
 
 
